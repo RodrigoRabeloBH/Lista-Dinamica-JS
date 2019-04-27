@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Ramal</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<header>
+				<div class="col-lg-4">
+				<img src="img/luiza.png" class="logo">				
+				</div>
+				<div class="col-lg-8">
+					<h1>Lista de Ramais</h1>
+					<input type="text"  name="nome_procurar" id="procura" placeholder="          Digite aqui o nome a procurar">
+				</div>
+			</header>				
+		</div>
+		<br>
+		<div class="row">
+			<section class="conteudo">
+				<form id="formulario" autocomplete="off">
+					<label for="sector">Setor: </label>
+					<input type="text" name="fsetor" id="sector">
+
+					<label for="name">Nome: </label>
+					<input type="text" name="fnome" id="name">
+
+					<label for="code">Ramal: </label>
+					<input type="text" name="framal" id="code">
+
+					<label for="fone">Telefone: </label>
+					<input type="tel" name="ftelefone" id="fone" pattern="[0-9]{4}-[0-9]{4}" placeholder="       Ex: 2102-0100" >
+					<input type="submit" name="btn" class="btn btn-secondary btn-sm" id="botao" value="Adicionar">
+					<h3 id="demo"></h3>
+				</form>
+			</section>	
+			<br><br>
+			<table>
+				<thead>
+					<tr>
+						<th>Setor</th>
+						<th>Nome</th>
+						<th>Ramal</th>
+						<th>Telefone</th>
+					</tr>
+				</thead>
+				<tbody id="lista"></tbody>
+			</table>			
+		</div>		
+	</div>
+</body>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#procura").on("keyup",function(){
+				let valor = $(this).val().toUpperCase()
+				$("#lista tr").filter(function(){
+					$(this).toggle($(this).text().toUpperCase().indexOf(valor) >-1)
+				})
+
+			})
+		})
+	</script>	
+</html>
